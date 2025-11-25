@@ -433,6 +433,71 @@ header .btn-outline-light:active {
     outline: none !important;
     border: none !important;
 }
+
+/* Dark Mode */
+body.dark-mode {
+    background: #0d1117;
+    color: #e6edf3;
+}
+
+body.dark-mode header {
+    background: #010409;
+    border-bottom: 1px solid #30363d;
+}
+
+body.dark-mode .page {
+    background: #0d1117;
+}
+
+body.dark-mode .product-card,
+body.dark-mode .rental-card,
+body.dark-mode .info-card,
+body.dark-mode .service-card,
+body.dark-mode .testimonial-card {
+    background: #161b22;
+    color: #e6edf3;
+    border-color: #30363d;
+}
+
+body.dark-mode .product-card h4,
+body.dark-mode .rental-card h5,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #e6edf3;
+}
+
+body.dark-mode footer {
+    background: #010409;
+    border-top: 1px solid #30363d;
+}
+
+body.dark-mode .bg-white {
+    background: #161b22 !important;
+    color: #e6edf3;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #161b22;
+    color: #e6edf3;
+    border-color: #30363d;
+}
+
+.dark-mode-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: .3s;
+    margin-left: 1rem;
+}
+
+.dark-mode-toggle:hover {
+    color: var(--orange);
+}
     </style>
 </head>
 <body>
@@ -452,6 +517,11 @@ header .btn-outline-light:active {
 <a href="#carrinho" onclick="openPage('carrinho'); event.preventDefault();" class="position-relative ms-2" style="font-size:1.7rem; color:#fff;">
     <i class="bi bi-cart3"></i>
     <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange" style="font-size:0.9rem;">0</span>
+</a>
+<a href="#" class="position-relative ms-2" style="font-size:1.7rem; color:#fff;">
+    <button class="dark-mode-toggle" id="darkModeBtn" title="Alternar Dark Mode">
+        <i class="bi bi-moon-fill"></i>
+    </button>
 </a>
                 <!-- login removido -->
          </nav>
@@ -713,216 +783,103 @@ header .btn-outline-light:active {
          <div class="row g-4 mb-5">
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="Dell Latitude 3420" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a438?w=400"/>
+                    <img alt="LENOVO IDEA PAD" src="img/lenovoideapad.png"/>
                     <div class="card-body">
-                        <h5>Dell Latitude 3420</h5>
-                        <p class="small">i5-1135G7 • 16GB • SSD 512GB</p>
-                        <span class="rental-price">R$ 229/mês</span>
+                        <h5>LENOVO IDEA PAD</h5>
+                        <p class="small">I5-6200U • 8GB • SSD-256GB</p>
+                        <span class="rental-price">R$ 175,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Dell%20Latitude%203420" target="_blank">Alugar</a>
                     </div>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="Lenovo ThinkPad T14" src="https://images.unsplash.com/photo-1541807084-5c53c4e9a0d1?w=400"/>
+                    <img alt="DELL VOSTRO" src="img/dellvostro.webp"/>
                     <div class="card-body">
-                        <h5>Lenovo ThinkPad T14</h5>
-                        <p class="small">Ryzen 5 PRO • 16GB • 512GB</p>
-                        <span class="rental-price">R$ 249/mês</span>
+                        <h5>DELL VOSTRO</h5>
+                        <p class="small">I3 1005G1 • 8GB • SSD-256GB</p>
+                        <span class="rental-price">R$ 180,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20ThinkPad%20T14" target="_blank">Alugar</a>
                     </div>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="HP ProBook 450 G8" src="https://images.unsplash.com/photo-1525547719571-3774f8e8038d?w=400"/>
+                    <img alt="LENOVO THINKPAD T440P" src="img/lenovothinkpad.png"/>
                     <div class="card-body">
-                        <h5>HP ProBook 450 G8</h5>
-                        <p class="small">i7-1165G7 • 16GB • 1TB SSD</p>
-                        <span class="rental-price">R$ 289/mês</span>
+                        <h5>LENOVO THINKPAD T440P</h5>
+                        <p class="small">I5-4300 • 8GB • SSD-256GB</p>
+                        <span class="rental-price">R$ 195,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20HP%20ProBook%20450" target="_blank">Alugar</a>
                     </div>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="Acer Aspire
-                        5" src="https://images.unsplash.com/photo-1588872657578-8d4e1d47f12e?w=400"/>
+                    <img alt="HP 240 G6" src="img/hp240.avif"/>
                     <div class="card-body">
-                        <h5>Acer Aspire 5</h5>
-                        <p class="small">i5-12ª • 20GB • 512GB</p>
-                        <span class="rental-price">R$ 199/mês</span>
+                        <h5>HP 240 G6</h5>
+                        <p class="small">I3 7020U • 8GB • HD 500GB </p>
+                        <span class="rental-price">R$ 180,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Acer%20Aspire%205" target="_blank">Alugar</a>
                     </div>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="Dell Inspiron 15" src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400"/>
+                    <img alt="Dell Inspiron 15" src="img/latitude5490.png"/>
                     <div class="card-body">
-                        <h5>Dell Inspiron 15 3520</h5>
-                        <p class="small">i7-1255U • 32GB • 1TB</p>
-                        <span class="rental-price">R$ 319/mês</span>
+                        <h5>DELL LATITUDE 5490</h5>
+                        <p class="small">I5-8250U • 8GB • SSD 512GB</p>
+                        <span class="rental-price">R$ 180,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Dell%20Inspiron%203520" target="_blank">Alugar</a>
                     </div>
                 </div>
             </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="Samsung Book" src="https://images.unsplash.com/photo-1587614382346-4f4c8f6c452c?w=400"/>
-                    <div class="card-body">
-                        <h5>Samsung Book</h5>
-                        <p class="small">i5-1135G7 • 8GB • 256GB</p>
-                        <span class="rental-price">R$ 179/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Samsung%20Book" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="Lenovo IdeaPad 3" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e3d?w=400"/>
-                    <div class="card-body">
-                        <h5>Lenovo IdeaPad 3</h5>
-                        <p class="small">Ryzen 7 • 16GB • 512GB</p>
-                        <span class="rental-price">R$ 259/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20IdeaPad%203" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="Asus VivoBook
-                        15" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400"/>
-                    <div class="card-body">
-                        <h5>Asus VivoBook 15</h5>
-                        <p class="small">i5-1235U • 20GB • 512GB</p>
-                        <span class="rental-price">R$ 209/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Asus%20VivoBook" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="Positivo Vision i15" src="https://images.unsplash.com/photo-1511385348-c0830e3fa1c8?w=400"/>
-                    <div class="card-body">
-                        <h5>Positivo Vision i15</h5>
-                        <p class="small">i5-1235U • 16GB • 512GB</p>
-                        <span class="rental-price">R$ 195/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Positivo%20Vision" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="MacBook Air M1" src="https://images.unsplash.com/photo-1593640495337-5f45f58a78a5?w=400"/>
-                    <div class="card-body">
-                        <h5>MacBook Air M1</h5>
-                        <p class="small">8GB • 256GB SSD</p>
-                        <span class="rental-price">R$ 449/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20MacBook%20Air%20M1" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="LG Gram 14" src="https://images.unsplash.com/photo-1611078489935-2e2d3b4f2c7d?w=400"/>
-                    <div class="card-body">
-                        <h5>LG Gram 14</h5>
-                        <p class="small">i7-12ª • 16GB • 1TB</p>
-                        <span class="rental-price">R$ 399/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20LG%20Gram" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="Vaio FE15" src="https://images.unsplash.com/photo-1588872657578-8d4e1d47f12e?w=400"/>
-                    <div class="card-body">
-                        <h5>Vaio FE15</h5>
-                        <p class="small">Ryzen 7 • 32GB • 512GB</p>
-                        <span class="rental-price">R$ 339/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Vaio%20FE15" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="Acer Nitro 5" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e3d?w=400"/>
-                    <div class="card-body">
-                        <h5>Acer Nitro 5</h5>
-                        <p class="small">i7 + RTX 3050 • 16GB</p>
-                        <span class="rental-price">R$ 429/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Acer%20Nitro%205" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="Dell XPS 13" src="https://images.unsplash.com/photo-1611186871348-b1ce08ceca9b?w=400"/>
-                    <div class="card-body">
-                        <h5>Dell XPS 13</h5>
-                        <p class="small">i7-12ª • 32GB • 1TB</p>
-                        <span class="rental-price">R$ 519/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Dell%20XPS%2013" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3">
-                <div class="rental-card h-100">
-                    <img alt="Lenovo Legion 5" src="https://images.unsplash.com/photo-1587614382346-4f4c8f6c452c?w=400"/>
-                    <div class="card-body">
-                        <h5>Lenovo Legion 5</h5>
-                        <p
-                            class="small">Ryzen 7 + RTX 3060 • 16GB</p>
-                        <span class="rental-price">R$ 589/mês</span>
-                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Lenovo%20Legion%205" target="_blank">Alugar</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+         </div>
 
          <h3 class="text-center mb-4" style="color:var(--primary)">Desktops para Aluguel</h3>
          <div class="row g-4 justify-content-center">
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="Desktop Básico" src="https://images.unsplash.com/photo-1522199757657-f58c70f3f20d?w=400"/>
+                    <img alt="DESKTOP" src="img/desktop.webp"/>
                     <div class="card-body">
-                        <h5>Desktop Básico</h5>
-                        <p class="small">i3-10100 • 8GB • SSD 256GB</p>
-                        <span class="rental-price">R$ 179/mês</span>
+                        <h5>DESKTOP</h5>
+                        <p class="small">i5-10400 • 16GB • SSD 248GB • PLACA DE VIDEO RX580 8GB - FONTE 500W</p>
+                        <span class="rental-price">R$ 500,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Desktop%20Básico" target="_blank">Alugar</a>
                     </div>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="Desktop Corporativo" src="https://images.unsplash.com/photo-1549413247-495b5465e903?w=400"/>
+                    <img alt="Desktop" src="img/desktop.webp"/>
                     <div class="card-body">
-                        <h5>Desktop Corporativo</h5>
-                        <p class="small">i5-11400 • 16GB • SSD 512GB</p>
-                        <span class="rental-price">R$ 249/mês</span>
+                        <h5>Desktop</h5>
+                        <p class="small">i5-10400 • 16GB • SSD 248GB • PLACA DE VIDEO RX580 8GB - FONTE 500W</p>
+                        <span class="rental-price">R$ 500,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Desktop%20Corporativo" target="_blank">Alugar</a>
                     </div>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="Desktop Alto Desempenho" src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400"/>
+                    <img alt="Desktop" src="img/desktop.webp"/>
                     <div class="card-body">
-                        <h5>Desktop Alto Desempenho</h5>
-                        <p class="small">i7-12700K • 32GB • 1TB NVMe</p>
-                        <span class="rental-price">R$ 499/mês</span>
+                        <h5>Desktop Desempenho</h5>
+                        <p class="small">i5-10400 • 16GB • SSD 248GB • PLACA DE VIDEO RX580 8GB - FONTE 500W</p>
+                        <span class="rental-price">R$ 500,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Desktop%20Alto%20Desempenho" target="_blank">Alugar</a>
                     </div>
                 </div>
             </div>
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="rental-card h-100">
-                    <img alt="Desktop Premium" src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400"/>
+                    <img alt="Desktop" src="img/desktop.webp"/>
                     <div class="card-body">
-                        <h5>Desktop Premium</h5>
-                        <p class="small">i9-13900K • 128GB • 4TB NVMe</p>
-                        <span class="rental-price">R$ 1.499/mês</span>
+                        <h5>Desktop</h5>
+                        <p class="small">i5-10400 • 16GB • SSD 248GB • PLACA DE VIDEO RX580 8GB - FONTE 500W</p>
+                        <span class="rental-price">R$ 500,00/mês</span>
                         <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Desktop%20Premium" target="_blank">Alugar</a>
                     </div>
                 </div>
@@ -1040,14 +997,6 @@ header .btn-outline-light:active {
 </div>
 <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
     <div class="product-card">
-        <img alt="Pen Drive Haoqing 64GB" src="img/usb_64gb.webp"/>
-        <h4>Pen Drive Haoqing USB 3.0 64GB</h4>
-        <p>R$ 59,90</p>
-        <button class="btn btn-orange w-100" onclick="addToCart('Pen Drive Haoqing USB 3.0 64GB', 59.90)">Adicionar</button>
-    </div>
-</div>
-<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
-    <div class="product-card">
         <img alt="Resma Papel A4 Chamex" src="img/resma.webp"/>
         <h4>Resma de Papel A4 Chamex</h4>
         <p>R$ 52,00</p>
@@ -1102,22 +1051,6 @@ header .btn-outline-light:active {
         <button class="btn btn-orange w-100" onclick="addToCart('Placa Mãe Gigabyte DDR4 LGA 1200 H510M K V2', 685.50)">Adicionar</button>
     </div>
 </div>
-            <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
-                <div class="product-card">
-                    <img alt="Monitor Gamer 24" src="img/monitor.png"/>
-                    <h4>Monitor Gamer 24' — 144Hz</h4>
-                    <p>R$ 1.250,00</p>
-                    <button class="btn btn-orange w-100" onclick="addToCart('Monitor Gamer 24 — 144Hz', 1250)">Adicionar</button>
-                </div>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3" data-category="peca">
-                <div class="product-card">
-                    <img alt="Fonte Corsair 650W" src="img/fonte_corsair.png"/>
-                    <h4>Fonte Corsair CX650 650W Plus Bronze</h4>
-                    <p>R$ 499,90</p>
-                    <button class="btn btn-orange w-100" onclick="addToCart('Fonte Corsair CX650 650W Plus Bronze', 499.90)">Adicionar</button>
-                </div>
-            </div>
             <div class="col-6 col-md-4 col-lg-3" data-category="peca">
                 <div class="product-card">
                     <img alt="Placa Mãe B550" src="img/placa_mae.png"/>
@@ -1184,14 +1117,6 @@ header .btn-outline-light:active {
 </div>
 <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
     <div class="product-card">
-        <img alt="Cabo de Rede 10m" src="img/cabo.webp"/>
-        <h4>Cabo de Rede Cat6 UTP 10 Metros</h4>
-        <p>R$ 45,00</p>
-        <button class="btn btn-orange w-100" onclick="addToCart('Cabo de Rede Cat6 UTP 10 Metros', 45)">Adicionar</button>
-    </div>
-</div>
-<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
-    <div class="product-card">
         <img alt="Switch Intelbras" src="img/intelbras.jpg"/>
         <h4>Switch Intelbras SG 800</h4>
         <p>R$ 255,00</p>
@@ -1206,7 +1131,7 @@ header .btn-outline-light:active {
         <button class="btn btn-orange w-100" onclick="addToCart('Roteador TP-Link AC1200 EC220-G5', 215.90)">Adicionar</button>
     </div>
 </div>
-        </div>
+        </div> <!-- fecha #product-list .row -->
     </section>
 
     <section class="page" id="quemsomos">
@@ -1400,7 +1325,7 @@ header .btn-outline-light:active {
                     <h4 class="mt-4 mb-3"><i class="bi bi-envelope"></i> E-mail</h4>
                     <p><strong>Suporte:</strong> <a href="mailto:3techinformaticamacae@gmail.com">3techinformaticamacae@gmail.com</a></p>
                     <h4 class="mt-4 mb-3"><i class="bi bi-clock"></i> Horário de Funcionamento</h4>
-                    <p>Segunda: 08h às 18h <br> Terça a Quinta: 08h às 19:30h <br>Sexta: 08h às 15h <br>Domingos e feriados: fechado</p>
+                    <p>Segunda: 08h às 18h <br> Terça a Quinta: 08h às 19:30h <br>Sexta: 08h às 17h <br>Sábados, domingos e feriados: fechado</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -1483,7 +1408,8 @@ header .btn-outline-light:active {
                             <button class="btn btn-orange w-100 mt-3" type="submit">Cadastrar</button>
                         </form>
                         <hr class="my-4"/>
-                        <p class="text-center">Já tem conta? <a href="#" id="show-login">Fazer login</a></p>
+                        <p class="text-center">Já tem conta? <a href="#" id="show-login">
+Fazer login</a></p>
                     </div>
                 </div>
             </div>
@@ -1822,52 +1748,23 @@ header .btn-outline-light:active {
       }).catch(()=>{});
     }
   })();
-    </script>
-    <script>
-    (function ensureMapEmbed(){
-        const iframe = document.getElementById('map-iframe');
-        const container = document.getElementById('map-container');
-        if (!iframe || !container) return;
-        // thumbnail público (usado como fallback) — abre Street View exato em nova aba
-        const streetUrl = "https://www.google.com/maps/place/22%C2%B022'10.6%22S+41%C2%B046'54.3%22W/@-22.3696218,-41.7817039,3a,75y,279.6h,82.18t/data=!3m7!1e1!3m5!1s7OkyWd0oBq1BFgqLWXGLuw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.822723481085433%26panoid%3D7OkyWd0oBq1BFgqLWXGLuw%26yaw%3D279.60221419747523!7i16384!8i8192!4m4!3m3!8m2!3d-22.3696111!4d-41.78175?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D";
-        const thumbUrl = "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?cb_client=maps_sv.tactile&w=900&h=600&pitch=7.822723481085433&panoid=7OkyWd0oBq1BFgqLWXGLuw&yaw=279.60221419747523";
 
-        // Se iframe carregar mas for bloqueado por X-Frame-Options o acesso ao conteúdo lança exceção
-        iframe.addEventListener('load', () => {
-            let blocked = false;
-            try {
-                // tentar acessar documento do iframe (disparará se bloqueado)
-                const doc = iframe.contentDocument || iframe.contentWindow.document;
-                // algumas vezes o browser mostra mensagem integrada mas permite acesso -> checar título vazio
-                if (!doc || !doc.body || doc.body.innerHTML.trim().length === 0) blocked = true;
-            } catch (e) {
-                blocked = true;
-            }
-            if (blocked) {
-                // substituir pelo fallback (imagem clicável)
-                container.innerHTML = `
-                    <a href="${streetUrl}" target="_blank" rel="noopener noreferrer" class="d-block h-100">
-                        <img src="${thumbUrl}" alt="Mapa - Street View" style="width:100%;height:100%;object-fit:cover;border-radius:.25rem;">
-                    </a>
-                `;
-                // garantir botão também abre a mesma URL
-                const openBtn = document.getElementById('open-streetview');
-                if (openBtn) openBtn.href = streetUrl;
-            }
-        });
+        // ==================== DARK MODE ====================
+const darkModeBtn = document.getElementById('darkModeBtn');
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-        // segurança: se o iframe nunca disparar load (rede lenta), mostrar fallback após 2.5s
-        setTimeout(() => {
-            if (!iframe.complete && container.contains(iframe)) {
-                // substituir por fallback
-                container.innerHTML = `
-                    <a href="${streetUrl}" target="_blank" rel="noopener noreferrer" class="d-block h-100">
-                        <img src="${thumbUrl}" alt="Mapa - Street View" style="width:100%;height:100%;object-fit:cover;border-radius:.25rem;">
-                    </a>
-                `;
-            }
-        }, 2500);
-    })();
+if (isDarkMode) {
+    document.body.classList.add('dark-mode');
+    darkModeBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+}
+
+darkModeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.body.classList.toggle('dark-mode');
+    const isNowDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isNowDark);
+    darkModeBtn.innerHTML = isNowDark ? '<i class="bi bi-sun-fill"></i>' : '<i class="bi bi-moon-fill"></i>';
+});
     </script>
 </body>
 </html>
