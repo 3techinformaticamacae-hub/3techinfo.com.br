@@ -1,0 +1,447 @@
+/* ============================
+   RESET / BASE
+============================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #f5f6fa;
+    color: #222;
+    line-height: 1.6;
+    padding-top: 90px; /* compensa o header fixo */
+}
+
+/* ============================
+   CORES PRINCIPAIS
+============================ */
+:root {
+    --orange: #ff7a00;
+    --orange-dark: #e06700;
+    --dark: #1a1a1a;
+    --light: #ffffff;
+    --gray: #f8f9fa;
+    --shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+    --primary: #0d3b66;
+    --whatsapp: #25d366;
+}
+
+/* ============================
+   TIPOGRAFIA
+============================ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.8rem;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.4rem;
+    margin: 4rem 0 2.5rem;
+    color: #222;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    width: 90px;
+    height: 5px;
+    background: var(--orange);
+    display: block;
+    margin: 14px auto 0;
+    border-radius: 3px;
+}
+
+/* ============================
+   HEADER FIXO
+============================ */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--dark);
+    padding: 16px 0;
+    box-shadow: var(--shadow);
+    z-index: 999;
+    transition: transform 0.4s;
+}
+
+header.scrolled {
+    padding: 12px 0;
+    background: rgba(26, 26, 26, 0.98);
+    backdrop-filter: blur(10px);
+}
+
+header.hide-on-scroll {
+    transform: translateY(-100%);
+    transition: transform 0.4s;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header .logo img {
+    height: 55px;
+    transition: .3s;
+}
+
+header .logo img:hover {
+    transform: scale(1.08);
+}
+
+header .nav a {
+    color: #fff;
+    margin: 0 12px;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+header .nav a:hover {
+    color: var(--orange);
+}
+
+.btn-orange {
+    background: var(--orange);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 15px;
+}
+
+.btn-orange:hover {
+    background: var(--orange-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 122, 0, 0.4);
+}
+
+/* ============================
+   PÁGINAS DO SITE
+============================ */
+.page {
+    display: none;
+    min-height: 80vh;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================
+   PRODUTOS — CARD COM ZOOM
+============================ */
+.product-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    padding: 15px;
+    background: #fdfdfd;
+    transition: transform 0.3s ease;
+}
+
+.product-card h4, .product-card p {
+    color: #222;
+}
+
+.product-card h4 {
+    font-size: 1.1rem;
+    margin: 12px 8px 8px;
+    flex-grow: 1;
+}
+
+.product-card p {
+    font-weight: 700;
+    color: var(--orange);
+    font-size: 1.3rem;
+    margin: 8px 0;
+}
+
+.product-card .btn {
+    margin: 10px 15px;
+    border-radius: 8px;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-card:hover img {
+    transform: scale(1.12);
+}
+
+/* ============================
+   BOTÃO WHATSAPP FLUTUANTE
+============================ */
+.whatsapp-float {
+    position: fixed;
+    width: 62px;
+    height: 62px;
+    bottom: 20px;
+    right: 20px;
+    background: var(--whatsapp);
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+.whatsapp-float svg {
+    width: 38px;
+    height: 38px;
+    fill: white;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 56px;
+        height: 56px;
+        bottom: 15px;
+        right: 15px;
+    }
+    .whatsapp-float svg {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 4px 20px rgba(37,211,102,0.9); }
+}
+
+/* ============================
+   FOOTER
+============================ */
+footer {
+    background: var(--dark);
+    color: #ccc;
+    padding: 40px 0 20px;
+    margin-top: 80px;
+    font-size: 14px;
+}
+
+footer a {
+    color: var(--orange);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================
+   TIMELINE MODERNA E PERFEITA
+============================ */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: var(--orange);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 3px;
+}
+
+.timeline-item {
+    padding: 20px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: white;
+    border: 5px solid var(--orange);
+    top: 28px;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 0 4px rgba(255, 122, 0, 0.2);
+}
+
+.left { left: 0; }
+.right { left: 50%; }
+
+.left::after { right: -16px; }
+.right::after { left: -16px; }
+
+.timeline-content {
+    padding: 30px 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    transition: all 0.4s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+}
+
+.timeline-year {
+    position: absolute;
+    top: -45px;
+    left: 35px;
+    background: var(--orange);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(255,122,0,0.4);
+}
+
+.right .timeline-year {
+    left: auto;
+    right: 35px;
+}
+
+.timeline-content h4 {
+    color: var(--primary);
+    margin: 10px 0 12px;
+    font-size: 1.4rem;
+}
+
+/* RESPONSIVO TIMELINE */
+@media (max-width: 767px) {
+    .timeline::after { left: 31px; }
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    .timeline-item::after { left: 15px; }
+    .right { left: 0%; }
+    .timeline-year {
+        left: 20px !important;
+        right: auto !important;
+        top: -40px;
+        font-size: 1rem;
+        padding: 6px 14px;
+    }
+}
+
+/* ============================
+   RESPONSIVO GERAL
+============================ */
+@media (max-width: 768px) {
+    .section-title { font-size: 1.9rem; }
+    header .nav { 
+        flex-wrap: wrap; 
+        gap: 10px; 
+        justify-content: center; 
+    }
+    header .nav a { 
+        margin: 5px 10px; 
+        font-size: 14px; 
+    }
+    body { padding-top: 100px; }
+}
+
+@media (max-width: 576px) {
+    .page .card {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+}
+
+/* Centralização vertical para páginas como login */
+.center-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Badge do carrinho no header */
+#cart-count {
+    min-width: 22px;
+    height: 22px;
+    font-size: 0.95rem;
+    display: inline-block;
+    text-align: center;
+    line-height: 22px;
+    background: var(--orange);
+    color: #fff;
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    z-index: 2;
+}
+
+.btn:focus, .btn-orange:focus {
+    outline: 2px solid var(--orange-dark);
+    outline-offset: 2px;
+}
+
+header .nav .btn-outline-light,
+header .nav .btn-outline-danger {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    vertical-align: middle;
+}

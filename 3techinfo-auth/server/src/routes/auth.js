@@ -1,0 +1,1 @@
+npm install react-google-login react-facebook-login

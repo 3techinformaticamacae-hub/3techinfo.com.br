@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>3TECHINFO – Soluções de TI Macaé</title>
+    <meta content="Suporte técnico 24h, aluguel de notebooks e desktops, infraestrutura de redes, CFTV e venda de equipamentos no ES."
+          name="description"/>
+    <meta content="3TECHINFO – Soluções Completas em TI" property="og:title"/>
+    <meta content="Aluguel de notebooks a partir de R$179/mês • Suporte técnico • Redes • CFTV" property="og:description"/>
+    <meta content="img/logo_3tech.png" property="og:image"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet"/>
+
+    <style>
+        :root {
+            --primary: #0d3b66;
+            --orange: #f28a30;
+            --orange-hover: #d97920;
+            --whatsapp: #25d366;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background: #f8f9fa;
+            margin: 0;
+        }
+        header {
+            background: var(--primary);
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .logo img {
+            height: 55px;
+            transition: .3s;
+        }
+        .logo img:hover {
+            transform: scale(1.08);
+        }
+        .nav a {
+            color: #fff;
+            margin: 0 .9rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: .4rem 0;
+            border-bottom: 2px solid transparent;
+            transition: .3s;
+        }
+        .nav a:hover {
+            color: var(--orange);
+            border-bottom-color: var(--orange);
+        }
+        .btn-orange {
+            background: var(--orange);
+            color: white;
+            border: none;
+            padding: .6rem 1.3rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: .3s;
+        }
+        .btn-orange:hover {
+            background: var(--orange-hover);
+            transform: translateY(-2px);
+        }
+        .carousel-item img {
+            height: 380px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        @media (max-width: 576px) {
+            .carousel-item img {
+                height: 220px;
+            }
+        }
+        .section-title {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 2.3rem;
+            text-align: center;
+            margin: 4rem 0 2.5rem;
+        }
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: .4s;
+            text-align: center;
+            height: 100%;
+            cursor: pointer;
+        }
+        .info-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .info-card i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+        }
+        .service-card .card-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), #0d5a99);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .service-card i {
+            font-size: 4.5rem;
+            opacity: 0.9;
+        }
+        .product-card, .rental-card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+            transition: .4s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        .product-card img, .rental-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            padding: 15px;
+            background: #f9f9f9;
+            transition: .4s;
+        }
+        .product-card:hover img, .rental-card:hover img {
+            transform: scale(1.1);
+        }
+        .product-card:hover, .rental-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.18);
+        }
+        .rental-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--orange);
+            margin: 0.5rem 0;
+        }
+        .page {
+            display: none;
+            min-height: 80vh;
+            padding-bottom: 6rem;
+        }
+        .page.active {
+            display: block;
+            animation: fadeIn .6s;
+        }
+        @keyframes fadeIn {
+            from {opacity:0} to {opacity:1}
+        }
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 6rem;
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 62px;
+            height: 62px;
+            bottom: 30px;
+            right: 30px;
+            background: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            font-size: 34px;
+            box-shadow: 0 4px 15px rgba(37,211,102,.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: .3s;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            background: #128c7e;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37,211,102,.7);
+            }
+            70% {
+                box-shadow: 0 0 0 12px rgba(37,211,102,0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37,211,102,0);
+            }
+        }
+        @media (max-width: 576px) {
+            .whatsapp-float {
+                width: 56px;
+                height: 56px;
+                font-size: 30px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        .about-hero {
+            background: linear-gradient(rgba(13,59,102,0.92), rgba(13,59,102,0.92)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+            color: white;
+            padding: 140px 20px;
+            text-align: center;
+        }
+        .about-hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        .mission-box {
+            background: linear-gradient(135deg, #0d3b66, #0d5a99);
+            color: white;
+            border-radius: 20px;
+            padding: 50px 30px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(13,59,102,0.3);
+            transition: transform 0.4s;
+        }
+        .mission-box:hover {
+            transform: translateY(-20px);
+        }
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+            transition: all 0.5s;
+            text-align: center;
+        }
+        .team-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+        .team-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: var(--orange);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: var(--orange);
+            border: 4px solid white;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .left::after {
+            right: -17px;
+        }
+        .right::after {
+            left: -17px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .timeline-year {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        @media screen and (max-width: 600px) {
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            .left::after, .right::after {
+                left: 15px;
+            }
+            .right {
+                left: 0%;
+            }
+        }
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .stars {
+            color: #ffc107;
+            font-size: 1.4rem;
+        }
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            line-height: 1;
+        }
+        .team-card .p-4 h5 {
+            color: #333 !important;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .team-card .p-4 p {
+            color: #666 !important;
+            margin-bottom: 5px;
+        }
+        .team-card .p-4 p.text-muted {
+            color: #888 !important;
+            font-style: italic;
+        }
+        /* Estilo para a página do Blog Post */
+        #blog-post-ssd {
+            background-color: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        #blog-post-ssd h1 {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        #blog-post-ssd img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        /* Novos estilos para os botões de Login Social */
+        .btn-google {
+            background-color: #db4437;
+            color: white;
+            border: none;
+        }
+        .btn-google:hover {
+            background-color: #c33d31;
+            color: white;
+        }
+        .btn-facebook {
+            background-color: #4267b2;
+            color: white;
+            border: none;
+        }
+        .btn-facebook:hover {
+            background-color: #3b5695;
+            color: white;
+        }
+
+        /* Badge com a cor laranja do tema */
+        .bg-orange {
+            background: var(--orange) !important;
+            color: #fff !important;
+        }
+
+        /* Esconde o cabeçalho ao rolar para baixo */
+        .hide-on-scroll {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        header .btn-outline-light {
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
+header .btn-outline-light:focus,
+header .btn-outline-light:active {
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container d-flex flex-wrap justify-content-between align-items-center">
+            <a class="logo" href="#home" onclick="openPage('home')">
+                <img alt="3TECHINFO" src="img/logo_3tech.png"/>
+            </a>
+            <nav class="nav d-flex flex-wrap gap-3 align-items-center">
+                <a href="#home" onclick="openPage('home'); event.preventDefault();">Início</a>
+<a href="#servicos" onclick="openPage('servicos'); event.preventDefault();">Serviços</a>
+<a href="#aluguel" onclick="openPage('aluguel'); event.preventDefault();">Aluguel</a>
+<a href="#produtos" onclick="openPage('produtos'); event.preventDefault();">Produtos</a>
+<a href="#quemsomos" onclick="openPage('quemsomos'); event.preventDefault();">Quem Somos</a>
+<a href="#blog" onclick="openPage('blog'); event.preventDefault();">Blog</a>
+<a href="#contato" onclick="openPage('contato'); event.preventDefault();">Contato</a>
+<a href="#carrinho" onclick="openPage('carrinho'); event.preventDefault();" class="position-relative ms-2" style="font-size:1.7rem; color:#fff;">
+    <i class="bi bi-cart3"></i>
+    <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-orange" style="font-size:0.9rem;">0</span>
+</a>
+                <!-- login removido -->
+         </nav>
+         </div> <!-- <-- ADICIONADO: fecha <div class="container"> do header -->
+     </header>
+
+    <section class="page active container" id="home">
+        <div class="carousel slide mb-5 rounded-4 overflow-hidden shadow-lg" data-bs-ride="carousel" id="mainBanner">
+            <div class="carousel-indicators">
+                <button class="active" data-bs-slide-to="0" data-bs-target="#mainBanner" type="button"></button>
+                <button data-bs-slide-to="1" data-bs-target="#mainBanner" type="button"></button>
+                <button data-bs-slide-to="2" data-bs-target="#mainBanner" type="button"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active"><img alt="Banner 1" class="d-block w-100" src="img/banner5.png"/></div>
+                <div class="carousel-item"><img alt="Banner 2" class="d-block w-100" src="img/banner6.png"/></div>
+                <div class="carousel-item"><img alt="Banner 3" class="d-block w-100" src="img/banner7.png"/></div>
+            </div>
+            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#mainBanner" type="button">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#mainBanner" type="button">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <h2 class="section-title">Nossas
+            Soluções
+        </h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="info-card" onclick="openPage('servicos')">
+                    <i class="bi bi-headset"></i>
+                    <h4>Suporte Técnico</h4>
+                    <p>Atendimento ágil e especializado.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card" onclick="openPage('servicos')">
+                    <i class="bi bi-diagram-3"></i>
+                    <h4>Infraestrutura de Redes</h4>
+                    <p>Instalação e manutenção.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card" onclick="openPage('servicos')">
+                    <i class="bi bi-tools"></i>
+                    <h4>Manutenção de Equipamentos</h4>
+                    <p>Reparo e upgrades.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card" onclick="openPage('produtos')">
+                    <i class="bi bi-cart4"></i>
+                    <h4>Venda de Produtos</h4>
+                    <p>Peças e periféricos com garantia.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card" onclick="openPage('servicos')">
+                    <i class="bi bi-shield-lock"></i>
+                    <h4>Segurança Eletrônica</h4>
+                    <p>Câmeras e alarmes.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-card" onclick="openPage('contato')">
+                    <i class="bi bi-chat-dots"></i>
+                    <h4>Abertura de Chamado</h4>
+                    <p>Solicite suporte agora.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container my-5">
+            <h2 class="section-title">O que nossos clientes dizem</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"Melhor suporte que já tive!
+                            Resolveram meu problema em menos de 1 hora."
+                        </p>
+                        <div class="stars">★★★★★</div>
+                        <strong>– João Silva </strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"Aluguei 10 notebooks pro evento e chegou tudo perfeito.
+                            Recomendo!"
+                        </p>
+                        <div class="stars">★★★★★</div>
+                        <strong>– Ana Costa </strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"Preço justo e atendimento nota 10. Minha empresa só usa a 3TECH agora."</p>
+                        <div class="stars">★★★★★</div>
+                        <strong>– Marcos Oliveira </strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"Instalaram câmeras na minha loja e ficou perfeito.
+                            Imagem nítida até de noite!"
+                        </p>
+                        <div class="stars">★★★★★</div>
+                        <strong>– Renata Lima </strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"Rede nova da empresa voando!
+                            Obrigado pelo cabeamento estruturado."
+                        </p>
+                        <div class="stars">★★★★★</div>
+                        <strong>– Pedro Santos </strong>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"Trocaram a fonte do meu PC gamer em 2 dias.
+                            Preço ótimo!"
+                        </p>
+                        <div class="stars">★★★★★</div>
+                        <strong>– Lucas Ferreira </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page container" id="servicos">
+        <h2 class="section-title">Nossos Serviços</h2>
+        <p class="lead text-center mb-5">Soluções completas e personalizadas em Tecnologia da Informação para empresas e residências.</p>
+        <div class="row g-5">
+            <div class="col-lg-6">
+                <div class="service-card h-100">
+                    <div class="card-img"><i class="bi bi-headset"></i></div>
+                    <div class="p-4">
+                        <h4>Suporte Técnico Presencial e Remoto</h4>
+                        <p>Atendimento rápido e eficiente com técnicos certificados.</p>
+                        <ul>
+                            <li>Formatação e instalação de Windows/Linux</li>
+                            <li>Remoção de vírus e malwares</li>
+                            <li>Recuperação de dados</li>
+                            <li>Configuração de e-mail e impressoras</li>
+                            <li>Suporte remoto via AnyDesk/TeamViewer</li>
+                            <li>Atendimento 24h em casos de emergência</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card h-100">
+                    <div class="card-img"><i class="bi bi-diagram-3"></i></div>
+                    <div class="p-4">
+                        <h4>Infraestrutura de Redes e Cabeamento</h4>
+                        <p>Projetamos, implementamos e mantemos redes corporativas com alta performance e segurança.</p>
+                        <ul>
+                            <li>Cabeamento estruturado (Cat5e/Cat6)</li>
+                            <li>Configuração de roteadores e switches</li>
+                            <li>Rede Wi-Fi corporativa com múltiplos pontos</li>
+                            <li>Segmentação
+                                de rede (VLAN)
+                            </li>
+                            <li>Balanceamento e redundância de link</li>
+                            <li>Monitoramento de tráfego e performance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card h-100">
+                    <div class="card-img"><i class="bi bi-tools"></i></div>
+                    <div class="p-4">
+                        <h4>Manutenção Preventiva e Corretiva</h4>
+                        <p>Evite paradas inesperadas com contratos de manutenção mensal ou avulso.</p>
+                        <ul>
+                            <li>Limpeza interna e troca de pasta térmica</li>
+                            <li>Upgrade de memória, SSD e HD</li>
+                            <li>Reparo de notebooks (tela, teclado, bateria)</li>
+                            <li>Substituição de fontes e componentes</li>
+                            <li>Diagnóstico avançado de hardware</li>
+                            <li>Relatórios mensais de saúde dos equipamentos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card h-100">
+                    <div class="card-img"><i class="bi bi-camera-video"></i></div>
+                    <div class="p-4">
+                        <h4>Segurança Eletrônica e CFTV</h4>
+                        <p>Soluções completas de monitoramento e controle de acesso.</p>
+                        <ul>
+                            <li>Instalação de câmeras IP e analógicas</li>
+                            <li>DVR/NVR Hikvision, Intelbras e outros</li>
+                            <li>Acesso remoto via celular</li>
+                            <li>Alarmes monitorados 24h</li>
+                            <li>Controle de acesso biométrico</li>
+                            <li>Projetos personalizados</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card h-100">
+                    <div class="card-img"><i class="bi bi-graph-up-arrow"></i></div>
+                    <div class="p-4">
+                        <h4>Consultoria
+                            e Projetos de TI
+                        </h4>
+                        <p>Planejamento estratégico para modernizar sua infraestrutura.</p>
+                        <ul>
+                            <li>Auditoria completa de TI</li>
+                            <li>Migração para nuvem</li>
+                            <li>Backup em nuvem</li>
+                            <li>Virtualização de servidores</li>
+                            <li>Implantação de ERP</li>
+                            <li>Treinamento de equipes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="service-card h-100">
+                    <div class="card-img"><i class="bi bi-people"></i></div>
+                    <div class="p-4">
+                        <h4>Outsourcing de TI</h4>
+                        <p>Deixe toda a gestão de TI com quem entende.</p>
+                        <ul>
+                            <li>Suporte técnico ilimitado</li>
+                            <li>Gestão de ativos de TI</li>
+                            <li>Monitoramento proativo 24x7</li>
+                            <li>Help desk dedicado</li>
+                            <li>Relatórios gerenciais mensais</li>
+                            <li>Previsibilidade de custos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a class="btn btn-orange btn-lg px-5" href="https://wa.me/22992221573?text=Olá!%20Gostaria%20de%20um%20orçamento%20de%20serviços%20de%20TI" target="_blank">
+                <i class="bi bi-whatsapp"></i> Solicitar Orçamento
+            </a>
+        </div>
+    </section>
+
+    <section class="page container py-5" id="aluguel">
+        <h2 class="section-title">Aluguel de Equipamentos</h2>
+        <p class="lead text-center mb-5">Notebooks e desktops com configuração garantida – valores
+            mensais (mínimo 30 dias)
+        </p>
+
+         <h3 class="text-center mb-4" style="color:var(--primary)">Notebooks para Aluguel</h3>
+         <div class="row g-4 mb-5">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Dell Latitude 3420" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a438?w=400"/>
+                    <div class="card-body">
+                        <h5>Dell Latitude 3420</h5>
+                        <p class="small">i5-1135G7 • 16GB • SSD 512GB</p>
+                        <span class="rental-price">R$ 229/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Dell%20Latitude%203420" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Lenovo ThinkPad T14" src="https://images.unsplash.com/photo-1541807084-5c53c4e9a0d1?w=400"/>
+                    <div class="card-body">
+                        <h5>Lenovo ThinkPad T14</h5>
+                        <p class="small">Ryzen 5 PRO • 16GB • 512GB</p>
+                        <span class="rental-price">R$ 249/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20ThinkPad%20T14" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="HP ProBook 450 G8" src="https://images.unsplash.com/photo-1525547719571-3774f8e8038d?w=400"/>
+                    <div class="card-body">
+                        <h5>HP ProBook 450 G8</h5>
+                        <p class="small">i7-1165G7 • 16GB • 1TB SSD</p>
+                        <span class="rental-price">R$ 289/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20HP%20ProBook%20450" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Acer Aspire
+                        5" src="https://images.unsplash.com/photo-1588872657578-8d4e1d47f12e?w=400"/>
+                    <div class="card-body">
+                        <h5>Acer Aspire 5</h5>
+                        <p class="small">i5-12ª • 20GB • 512GB</p>
+                        <span class="rental-price">R$ 199/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Acer%20Aspire%205" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Dell Inspiron 15" src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400"/>
+                    <div class="card-body">
+                        <h5>Dell Inspiron 15 3520</h5>
+                        <p class="small">i7-1255U • 32GB • 1TB</p>
+                        <span class="rental-price">R$ 319/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Dell%20Inspiron%203520" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Samsung Book" src="https://images.unsplash.com/photo-1587614382346-4f4c8f6c452c?w=400"/>
+                    <div class="card-body">
+                        <h5>Samsung Book</h5>
+                        <p class="small">i5-1135G7 • 8GB • 256GB</p>
+                        <span class="rental-price">R$ 179/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Samsung%20Book" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Lenovo IdeaPad 3" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e3d?w=400"/>
+                    <div class="card-body">
+                        <h5>Lenovo IdeaPad 3</h5>
+                        <p class="small">Ryzen 7 • 16GB • 512GB</p>
+                        <span class="rental-price">R$ 259/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20IdeaPad%203" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Asus VivoBook
+                        15" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400"/>
+                    <div class="card-body">
+                        <h5>Asus VivoBook 15</h5>
+                        <p class="small">i5-1235U • 20GB • 512GB</p>
+                        <span class="rental-price">R$ 209/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Asus%20VivoBook" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Positivo Vision i15" src="https://images.unsplash.com/photo-1511385348-c0830e3fa1c8?w=400"/>
+                    <div class="card-body">
+                        <h5>Positivo Vision i15</h5>
+                        <p class="small">i5-1235U • 16GB • 512GB</p>
+                        <span class="rental-price">R$ 195/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Positivo%20Vision" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="MacBook Air M1" src="https://images.unsplash.com/photo-1593640495337-5f45f58a78a5?w=400"/>
+                    <div class="card-body">
+                        <h5>MacBook Air M1</h5>
+                        <p class="small">8GB • 256GB SSD</p>
+                        <span class="rental-price">R$ 449/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20MacBook%20Air%20M1" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="LG Gram 14" src="https://images.unsplash.com/photo-1611078489935-2e2d3b4f2c7d?w=400"/>
+                    <div class="card-body">
+                        <h5>LG Gram 14</h5>
+                        <p class="small">i7-12ª • 16GB • 1TB</p>
+                        <span class="rental-price">R$ 399/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20LG%20Gram" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Vaio FE15" src="https://images.unsplash.com/photo-1588872657578-8d4e1d47f12e?w=400"/>
+                    <div class="card-body">
+                        <h5>Vaio FE15</h5>
+                        <p class="small">Ryzen 7 • 32GB • 512GB</p>
+                        <span class="rental-price">R$ 339/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Vaio%20FE15" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Acer Nitro 5" src="https://images.unsplash.com/photo-1593642632823-8f785ba67e3d?w=400"/>
+                    <div class="card-body">
+                        <h5>Acer Nitro 5</h5>
+                        <p class="small">i7 + RTX 3050 • 16GB</p>
+                        <span class="rental-price">R$ 429/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Acer%20Nitro%205" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Dell XPS 13" src="https://images.unsplash.com/photo-1611186871348-b1ce08ceca9b?w=400"/>
+                    <div class="card-body">
+                        <h5>Dell XPS 13</h5>
+                        <p class="small">i7-12ª • 32GB • 1TB</p>
+                        <span class="rental-price">R$ 519/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Dell%20XPS%2013" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Lenovo Legion 5" src="https://images.unsplash.com/photo-1587614382346-4f4c8f6c452c?w=400"/>
+                    <div class="card-body">
+                        <h5>Lenovo Legion 5</h5>
+                        <p
+                            class="small">Ryzen 7 + RTX 3060 • 16GB</p>
+                        <span class="rental-price">R$ 589/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Lenovo%20Legion%205" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <h3 class="text-center mb-4" style="color:var(--primary)">Desktops para Aluguel</h3>
+         <div class="row g-4 justify-content-center">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Desktop Básico" src="https://images.unsplash.com/photo-1522199757657-f58c70f3f20d?w=400"/>
+                    <div class="card-body">
+                        <h5>Desktop Básico</h5>
+                        <p class="small">i3-10100 • 8GB • SSD 256GB</p>
+                        <span class="rental-price">R$ 179/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Desktop%20Básico" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Desktop Corporativo" src="https://images.unsplash.com/photo-1549413247-495b5465e903?w=400"/>
+                    <div class="card-body">
+                        <h5>Desktop Corporativo</h5>
+                        <p class="small">i5-11400 • 16GB • SSD 512GB</p>
+                        <span class="rental-price">R$ 249/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Desktop%20Corporativo" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Desktop Alto Desempenho" src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400"/>
+                    <div class="card-body">
+                        <h5>Desktop Alto Desempenho</h5>
+                        <p class="small">i7-12700K • 32GB • 1TB NVMe</p>
+                        <span class="rental-price">R$ 499/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Desktop%20Alto%20Desempenho" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="rental-card h-100">
+                    <img alt="Desktop Premium" src="https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=400"/>
+                    <div class="card-body">
+                        <h5>Desktop Premium</h5>
+                        <p class="small">i9-13900K • 128GB • 4TB NVMe</p>
+                        <span class="rental-price">R$ 1.499/mês</span>
+                        <a class="btn btn-orange mt-auto w-100" href="https://wa.me/22992221573?text=Quero%20alugar%20Desktop%20Premium" target="_blank">Alugar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="page container py-5" id="produtos">
+        <h2 class="section-title">Catálogo de Produtos</h2>
+        <p class="lead text-center mb-4">Temos tudo o que você precisa com os melhores preços e garantia!</p>
+
+        <div class="text-center mb-5">
+            <button class="btn btn-outline-primary me-2" onclick="filterProducts('todos')">Todos</button>
+            <button class="btn btn-outline-primary me-2" onclick="filterProducts('notebook')">Notebooks</button>
+            <button class="btn btn-outline-primary me-2" onclick="filterProducts('computador')">Computadores</button>
+            <button class="btn btn-outline-primary me-2" onclick="filterProducts('peca')">Peças</button>
+            <button class="btn btn-outline-primary" onclick="filterProducts('periferico')">Periféricos</button>
+        </div>
+
+        <div class="row g-4" id="product-list">
+            <div class="col-6 col-md-4 col-lg-3" data-category="notebook">
+                <div class="product-card">
+                    <img alt="Notebook i5 8350U" src="img/notebook_dell.png"/>
+                    <h4>Notebook i5 8350U — 8GB RAM</h4>
+                    <p>R$ 200,00</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Notebook i5 8350U — 8GB RAM', 200)">Adicionar</button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="computador">
+                <div class="product-card">
+                    <img alt="Desktop i5 RX 580" src="img/computador.png"/>
+                    <h4>Desktop i5 10200 — 16GB RAM — RX 580</h4>
+                    <p>R$ 2.999,00</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Desktop i5 10200 — 16GB RAM — RX 580', 2999)">Adicionar</button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Caixa de Som JBL GO Essential" src="img/JBL.png"/>
+        <h4>Caixa de Som GO Essential Portátil Bluetooth Preta JBL</h4>
+        <p>R$ 249,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Caixa de Som GO Essential Portátil Bluetooth Preta JBL', 249)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Caixa de Som Maxprint" src="img/caixadesom.jpg"/>
+        <h4>Caixa de Som Sound Master 2.1 Subwoofer USB 2.0 5W Maxprint</h4>
+        <p>R$ 125,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Caixa de Som Sound Master 2.1 Subwoofer USB 2.0 5W Maxprint', 125)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Switch TP-Link 5 Portas" src="img/tplink.webp"/>
+        <h4>Desktop Switch TP-Link 5 Portas 10/100Mbps LS1005</h4>
+        <p>R$ 79,90</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Desktop Switch TP-Link 5 Portas 10/100Mbps LS1005', 79.90)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Switch TP-Link 16 Portas" src="img/tplink16.jpg"/>
+        <h4>Switch TP-Link 16 Portas 10/100Mbps Desktop Switch TL-SF1016D</h4>
+        <p>R$ 345,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Switch TP-Link 16 Portas 10/100Mbps Desktop Switch TL-SF1016D', 345)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Switch Mercusys 8 Portas" src="img/mercu8.webp"/>
+        <h4>Switch 8 Portas 10/100Mbps MS108 Mercusys</h4>
+        <p>R$ 75,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Switch 8 Portas 10/100Mbps MS108 Mercusys', 75)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Switch Intelbras SG 800" src="img/intelbras.jpg"/>
+        <h4>Switch 8 Portas Gigabit Ethernet SG 800 Q+ / SG 800 VLAN Intelbras</h4>
+        <p>R$ 255,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Switch 8 Portas Gigabit Ethernet SG 800 Q+ / SG 800 VLAN Intelbras', 255)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Roteador TP-Link Mesh" src="img/tplinkac1200.webp"/>
+        <h4>Roteador Wi-Fi 5 Dual Band Mesh AC1200 Gigabit EC220-G5 TP-Link</h4>
+        <p>R$ 215,90</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Roteador Wi-Fi 5 Dual Band Mesh AC1200 Gigabit EC220-G5 TP-Link', 215.90)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Placa de Som USB Exbom" src="img/placadesom.webp"/>
+        <h4>Placa de Som USB 7.1 Adaptador de Áudio P2 P3 Exbom</h4>
+        <p>R$ 39,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Placa de Som USB 7.1 Adaptador de Áudio P2 P3 Exbom', 39)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="peca">
+    <div class="product-card">
+        <img alt="SSD Patriot 240GB" src="img/ssdpatriot.webp"/>
+        <h4>SSD Patriot 240GB</h4>
+        <p>R$ 249,90</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('SSD Patriot 240GB', 249.90)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="peca">
+    <div class="product-card">
+        <img alt="SSD Patriot M2 512GB" src="img/ssdpatriot520.webp"/>
+        <h4>SSD Patriot M2 512GB</h4>
+        <p>R$ 390,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('SSD Patriot M2 512GB', 390)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Pen Drive Haoqing 64GB" src="img/usb_64gb.webp"/>
+        <h4>Pen Drive Haoqing USB 3.0 64GB</h4>
+        <p>R$ 59,90</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Pen Drive Haoqing USB 3.0 64GB', 59.90)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Resma Papel A4 Chamex" src="img/resma.webp"/>
+        <h4>Resma de Papel A4 Chamex</h4>
+        <p>R$ 52,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Resma de Papel A4 Chamex', 52)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Kit Teclado e Mouse MK270" src="img/teclado.webp"/>
+        <h4>Kit Teclado e Mouse MK270 S/ Fio Logitech MK270</h4>
+        <p>R$ 219,50</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Kit Teclado e Mouse MK270 S/ Fio Logitech MK270', 219.50)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Kit Teclado e Mouse MK120" src="img/mk120.webp"/>
+        <h4>Kit Teclado e Mouse MK120 Logitech MK270</h4>
+        <p>R$ 145,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Kit Teclado e Mouse MK120 Logitech MK270', 145)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Mouse Logitech Wireless M170" src="img/Mlogitec.jpg"/>
+        <h4>Mouse Óptico Logitech Wireless M170 910-004940</h4>
+        <p>R$ 85,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Mouse Óptico Logitech Wireless M170 910-004940', 85)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Mouse Logitech M185 Sem Fio" src="img/mlogisemfio.webp"/>
+        <h4>Mouse Óptico S/Fio Logitech M185 910-002225</h4>
+        <p>R$ 99,90</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Mouse Óptico S/Fio Logitech M185 910-002225', 99.90)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Headset USB PH-340 C3Tech" src="img/H7ph.webp"/>
+        <h4>Headset USB PH-340 C3Tech Preto</h4>
+        <p>R$ 145,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Headset USB PH-340 C3Tech Preto', 145)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="peca">
+    <div class="product-card">
+        <img alt="Placa Mãe Gigabyte H510M K V2" src="img/placamaea510.webp"/>
+        <h4>Placa Mãe Gigabyte DDR4 LGA 1200 H510M K V2</h4>
+        <p>R$ 685,50</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Placa Mãe Gigabyte DDR4 LGA 1200 H510M K V2', 685.50)">Adicionar</button>
+    </div>
+</div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+                <div class="product-card">
+                    <img alt="Monitor Gamer 24" src="img/monitor.png"/>
+                    <h4>Monitor Gamer 24' — 144Hz</h4>
+                    <p>R$ 1.250,00</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Monitor Gamer 24 — 144Hz', 1250)">Adicionar</button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="peca">
+                <div class="product-card">
+                    <img alt="Fonte Corsair 650W" src="img/fonte_corsair.png"/>
+                    <h4>Fonte Corsair CX650 650W Plus Bronze</h4>
+                    <p>R$ 499,90</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Fonte Corsair CX650 650W Plus Bronze', 499.90)">Adicionar</button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="peca">
+                <div class="product-card">
+                    <img alt="Placa Mãe B550" src="img/placa_mae.png"/>
+                    <h4>Placa Mãe Asus B550M Plus Wi-Fi</h4>
+                    <p>R$ 1.150,00</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Placa Mãe Asus B550M Plus Wi-Fi', 1150)">Adicionar</button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+                <div class="product-card">
+                    <img alt="Pen Drive 64GB" src="img/pendrive64.avif"/>
+                    <h4>Pen Drive Haoqing USB 3.0 — 64GB</h4>
+                    <p>R$ 59,90</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Pen Drive Haoqing USB 3.0 — 64GB', 59.90)">Adicionar</button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+                <div class="product-card">
+                    <img alt="Resma Papel A4" src="img/resma.webp"/>
+                    <h4>Resma de Papel A4 Chamex</h4>
+                    <p>R$ 52,00</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Resma de Papel A4 Chamex', 52)">Adicionar</button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+                <div class="product-card">
+                    <img alt="Kit Logitech MK270" src="img/teclado.webp"/>
+                    <h4>Kit Teclado + Mouse Logitech MK270</h4>
+                    <p>R$ 219,50</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Kit Teclado + Mouse Logitech MK270', 219.50)">Adicionar</button>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+                <div class="product-card">
+                    <img alt="Kit Logitech MK120" src="img/mk120.webp"/>
+                    <h4>Kit Teclado + Mouse MK120</h4>
+                    <p>R$ 145,00</p>
+                    <button class="btn btn-orange w-100" onclick="addToCart('Kit Teclado + Mouse MK120', 145)">Adicionar</button>
+                </div>
+            </div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Mouse M170" src="img/Mlogitec.jpg"/>
+        <h4>Mouse Logitech Wireless M170</h4>
+        <p>R$ 85,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Mouse Logitech Wireless M170', 85)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Mouse M185" src="img/mlogisemfio.webp"/>
+        <h4>Mouse Logitech M185 Sem Fio</h4>
+        <p>R$ 99,90</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Mouse Logitech M185 Sem Fio', 99.90)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Switch TP-Link" src="img/switch_tp_link.webp"/>
+        <h4>Switch TP-Link TL-SG1008D 8 Portas</h4>
+        <p>R$ 139,90</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Switch TP-Link TL-SG1008D 8 Portas', 139.90)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Cabo de Rede 10m" src="img/cabo.webp"/>
+        <h4>Cabo de Rede Cat6 UTP 10 Metros</h4>
+        <p>R$ 45,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Cabo de Rede Cat6 UTP 10 Metros', 45)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Switch Intelbras" src="img/intelbras.jpg"/>
+        <h4>Switch Intelbras SG 800</h4>
+        <p>R$ 255,00</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Switch Intelbras SG 800 / SG 800 VLAN', 255)">Adicionar</button>
+    </div>
+</div>
+<div class="col-6 col-md-4 col-lg-3" data-category="periferico">
+    <div class="product-card">
+        <img alt="Roteador AC1200" src="img/tplinkac1200.webp"/>
+        <h4>Roteador TP-Link AC1200</h4>
+        <p>R$ 215,90</p>
+        <button class="btn btn-orange w-100" onclick="addToCart('Roteador TP-Link AC1200 EC220-G5', 215.90)">Adicionar</button>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <section class="page" id="quemsomos">
+        <div class="container py-5">
+            <h2 class="section-title">Nossa Trajetória</h2>
+            <div class="timeline position-relative">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">1998</span>
+                        <h4>Início da Jornada</h4>
+                        <p>Nascemos como uma pequena assistência técnica residencial em Macaé,
+                            com foco em suporte ágil e preço justo.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2001</span>
+                        <h4>Primeiro Grande Cliente Corporativo</h4>
+                        <p>Assinamos contrato com nossa primeira empresa de grande porte.
+                            Isso marcou o início da expansão para o mercado B2B.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2008</span>
+                        <h4>Aluguel de Notebooks</h4>
+                        <p>Lançamos o serviço de locação de equipamentos — ajudamos dezenas de empresas a manterem home office com qualidade.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <span class="timeline-year">2016</span>
+                        <h4>500+ Clientes Atendidos</h4>
+                        <p>Ultrapassamos a marca de 500 empresas e residências atendidas em toda Macaé. Aumentamos nosso time e portfólio de serviços.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Nossa Equipe</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4 col-lg-3">
+                    <div class="team-card">
+                        <img alt="" src="img/jorgeCEO.jpg"/>
+                        <div class="p-4">
+                            <h5>Jorge Chaloub</h5>
+                            <p>CEO & Fundador</p>
+                            <p class="text-muted"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="team-card">
+                        <img alt="" src="img/kerollyn.jpg"/>
+                        <div class="p-4">
+                            <h5>Kerollyn</h5>
+                            <p>Secretária e Assistente</p>
+                            <p class="text-muted">Atendimentos de qualidade</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div class="team-card">
+                        <img alt="" src="img/ttenny.jpg"/>
+                        <div class="p-4">
+                            <h5>Tenisson Martins</h5>
+                            <p>Técnico Sênior</p>
+                            <p class="text-muted">Técnico e Reparos</p>
+                            <p>Mais de 800 atendimentos realizados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center py-5 bg-white">
+            <h2 class="section-title">Pronto para fazer parte da nossa história?</h2>
+            <p class="lead mb-4">Entre em contato agora mesmo e vamos construir juntos o futuro da sua empresa.</p>
+            <a class="btn btn-orange btn-lg px-5" href="https://wa.me/22992221573?text=Olá!%20Vim%20pela%20página%20Quem%20Somos%20e%20gostaria%20de%20conhecer%20os%20serviços" target="_blank">
+                <i class="bi bi-whatsapp"></i> Falar com a 3TECHINFO
+            </a>
+        </div>
+    </section>
+
+    <section class="page container py-5" id="blog">
+        <h2 class="section-title">Blog 3TECHINFO</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img alt="SSD vs HD" class="card-img-top" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800"/>
+                    <div class="card-body">
+                        <h5>SSD vs HD: Qual escolher em 2025?</h5>
+                        <p class="text-muted">15/11/2025</p>
+                        <p>O SSD já é
+                            obrigatório em qualquer máquina nova...
+                        </p>
+                        <a class="btn btn-orange btn-sm" href="#blog-post-ssd" onclick="openPage('blog-post-ssd')">Ler mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img alt="Computador vs Notebook" class="card-img-top" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800"/>
+                    <div class="card-body">
+                        <h5>Computador ou Notebook: Qual escolher?</h5>
+                        <p class="text-muted">23/11/2025</p>
+                        <p>Descubra as principais diferenças e saiba qual é o ideal para você!</p>
+                        <a class="btn btn-orange btn-sm" href="#blog-post-pc-vs-notebook" onclick="openPage('blog-post-pc-vs-notebook')">Ler mais</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </section>
+
+    <section class="page container py-5" id="blog-post-ssd">
+        <h1 class="mb-4">SSD vs HD: Qual escolher em 2025 e por quê?</h1>
+        <p class="text-muted lead">Publicado em 15/11/2025 por Tenisson Martins | Categoria: Hardware</p>
+
+        <img alt="SSD e HD lado a lado" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200" class="img-fluid my-4">
+
+        <p class="fs-5">No mundo da tecnologia, a escolha do dispositivo de armazenamento é crucial para a performance geral de um computador. Em 2025, o debate entre SSD (Solid State Drive) e HD (Hard Disk Drive) já se tornou uma decisão praticamente unânime: o SSD é o padrão de mercado.</p>
+
+        <h3 class="mt-5">Por que o SSD é o Vencedor?</h3>
+        <p>A velocidade é o fator decisivo. Um SSD utiliza memória flash, não possui partes móveis e pode ser até 10 vezes mais rápido que um HD tradicional. Isso se traduz em:</p>
+        <ul>
+            <li>**Inicialização (Boot) em segundos:** O sistema operacional carrega em uma fração do tempo.</li>
+            <li>**Abertura de Programas Instantânea:** Softwares pesados como Photoshop ou jogos carregam quase imediatamente.</li>
+            <li>**Maior Durabilidade:** Sem partes móveis, o SSD resiste melhor a quedas e vibrações.</li        </ul>
+
+        <h3 class="mt-4">Onde o HD ainda se encaixa?</h3>
+        <p>O HD ainda tem seu lugar, principalmente como solução de armazenamento massivo e de baixo custo. Eles são ideais para backups e para guardar grandes volumes de arquivos (filmes, fotos, arquivos mortos) que não precisam de acesso rápido. Para servidores de arquivos com orçamentos limitados, o HD ainda pode ser uma opção viável.</p>
+
+        <h3 class="mt-4">Nossa Recomendação</h3>
+        <p class="fw-bold">Para a sua empresa ou uso pessoal, recomendamos sempre o uso de SSD para o sistema operacional e programas. Se você precisa de espaço extra, combine um SSD menor (256GB ou 512GB) com um HD de alta capacidade (1TB ou mais) para armazenamento de dados.</p>
+
+        <div class="text-center mt-5">
+            <a class="btn btn-outline-primary" href="#blog" onclick="openPage('blog')"><i class="bi bi-arrow-left"></i> Voltar para o Blog</a>
+        </div>
+    </section>
+
+    <section class="page container py-5" id="blog-post-pc-vs-notebook">
+    <h1 class="mb-4">Computador ou Notebook: Qual escolher em 2025?</h1>
+    <p class="text-muted lead">Publicado em 23/11/2025 por Tenisson Martins | Categoria: Dicas de Compra</p>
+
+    <img alt="Computador e Notebook lado a lado" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=1200" class="img-fluid my-4">
+
+    <h3 class="mt-5">Principais Diferenças</h3>
+    <ul>
+        <li><strong>Mobilidade:</strong> Notebooks são portáteis, ideais para quem precisa trabalhar ou estudar em diferentes lugares.</li>
+        <li><strong>Desempenho:</strong> Computadores de mesa geralmente oferecem mais potência e capacidade de upgrade.</li>
+        <li><strong>Preço:</strong> Notebooks podem ser mais caros pelo fator portabilidade, enquanto desktops oferecem melhor custo-benefício em desempenho.</li>
+        <li><strong>Ergonomia:</strong> Desktops permitem uso de monitores maiores e periféricos mais confortáveis.</li>
+        <li><strong>Consumo de energia:</strong> Notebooks consomem menos energia e possuem bateria, úteis em locais sem tomada.</li>
+    </ul>
+
+    <h3 class="mt-4">Por que escolher um Computador?</h3>
+    <ul>
+        <li>Maior desempenho para tarefas pesadas (edição de vídeo, jogos, projetos 3D).</li>
+        <li>Facilidade de upgrade (memória, placa de vídeo, armazenamento).</li>
+        <li>Melhor ergonomia para uso prolongado.</li>
+        <li>Ideal para quem trabalha sempre no mesmo local.</li>
+        <li>Maior durabilidade e vida útil dos componentes.</li>
+    </ul>
+
+    <h3 class="mt-4">Por que escolher um Notebook?</h3>
+    <ul>
+        <li>Portabilidade: leve para qualquer lugar, use em casa, trabalho ou viagens.</li>
+        <li>Economia de espaço: não precisa de mesa grande ou muitos cabos.</li>
+        <li>Bateria: continue usando mesmo sem energia elétrica.</li>
+        <li>Ideal para estudantes, profissionais que visitam clientes ou trabalham remotamente.</li>
+        <li>Modelos modernos oferecem desempenho suficiente para a maioria das tarefas.</li>
+    </ul>
+
+    <h3 class="mt-4">Recomendações</h3>
+    <p class="fw-bold">Se você precisa de mobilidade, escolha um notebook. Se busca desempenho máximo e upgrades, opte por um computador de mesa. Avalie seu perfil de uso e invista no que melhor atende suas necessidades!</p>
+
+    <div class="text-center mt-5">
+        <a class="btn btn-outline-primary" href="#blog" onclick="openPage('blog')"><i class="bi bi-arrow-left"></i> Voltar para o Blog</a>
+    </div>
+</section>
+
+    <section class="page container text-center py-5" id="contato">
+        <h2 class="section-title">Contato</h2>
+        <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+                <div class="bg-white rounded shadow-sm p-4 mb-4">
+                    <h4 class="mb-3"><i class="bi bi-telephone"></i> Telefone</h4>
+                    <p class="mb-2"><strong>Fixo:</strong> (22) 99222-1573</p>
+                    <p class="mb-2"><strong>WhatsApp:</strong> <a href="https://wa.me/22992221573" target="_blank">(22) 99222-1573</a></p>
+                    <h4 class="mt-4 mb-3"><i class="bi bi-envelope"></i> E-mail</h4>
+                    <p><strong>Suporte:</strong> <a href="mailto:3techinformaticamacae@gmail.com">3techinformaticamacae@gmail.com</a></p>
+                    <h4 class="mt-4 mb-3"><i class="bi bi-clock"></i> Horário de Funcionamento</h4>
+                    <p>Segunda: 08h às 18h <br> Terça a Quinta: 08h às 19:30h <br>Sexta: 08h às 15h <br>Domingos e feriados: fechado</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-white rounded shadow-sm p-4 mb-4">
+                    <h4 class="mb-3"><i class="bi bi-geo-alt"></i> Localização</h4>
+                    <p>Centro, Macaé - RJ, 27970-020</p>
+                    <div class="ratio ratio-16x9 rounded shadow-sm" id="map-container">
+                        <!-- iframe embed genérico por coordenadas (mais compatível). -->
+                        <iframe id="map-iframe"
+                                src="https://www.google.com/maps?q=-22.3696111,-41.78175&hl=pt-BR&z=18&output=embed"
+                                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                     </div>
+ 
+                     <div class="text-center mt-3">
+                        <a class="btn btn-outline-primary" id="open-streetview" target="_blank" rel="noopener noreferrer" aria-label="Ver mapa ampliado no Google Maps"
+                           href="https://www.google.com/maps/place/22%C2%B022'10.6%22S+41%C2%B046'54.3%22W/@-22.3696218,-41.7817039,3a,75y,279.6h,82.18t/data=!3m7!1e1!3m5!1s7OkyWd0oBq1BFgqLWXGLuw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.822723481085433%26panoid%3D7OkyWd0oBq1BFgqLWXGLuw%26yaw%3D279.60221419747523!7i16384!8i8192!4m4!3m3!8m2!3d-22.3696111!4d-41.78175?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D">
+                            <i class="bi bi-arrows-fullscreen me-2"></i> Ver mapa ampliado
+                        </a>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a class="btn btn-success btn-lg px-5" href="https://wa.me/22992221573">
+                <i class="bi bi-whatsapp"></i> Abrir WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section class="page container py-5" id="login">
+        <div class="row justify-content-center w-100">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <div class="text-center mb-5">
+                    <h2 class="section-title" style="font-size:2.4rem;
+                        margin:0;">Área do Cliente</h2>
+                    <p class="lead">Faça login ou crie sua conta grátis</p>
+                </div>
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5">
+
+                        <div class="d-grid gap-2 mb-4">
+                            <!-- Login social e integração com servidor removidos -->
+                            <div class="alert alert-secondary text-center mb-0">Login social desativado — use contato/telefone</div>
+                        </div>
+
+                        <div class="text-center mb-4 text-muted">Ou use seu e-mail</div>
+
+                        <form id="login-form">
+                            <div class="mb-3">
+                                <label class="form-label" for="login-email">Email</label>
+                                <input class="form-control" id="login-email" required="" type="email"/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="login-password">Senha</label>
+                                <input class="form-control" id="login-password" required="" type="password"/>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3" type="submit">Entrar</button>
+                        </form>
+                        <hr class="my-4"/>
+                        <p class="text-center">Não tem conta? <a href="#" id="show-register">Crie sua conta</a></p>
+                    </div>
+                </div>
+
+                <div class="card shadow-lg border-0 mt-5" style="display:none" id="register-card">
+                    <div class="card-body p-5">
+                        <h4 class="card-title text-center mb-4" style="color:var(--primary)">Criar Conta</h4>
+                        <form id="register-form">
+                            <div class="mb-3">
+                                <label class="form-label" for="register-name">Nome</label>
+                                <input class="form-control" id="register-name" required="" type="text"/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="register-email">Email</label>
+                                <input class="form-control" id="register-email" required="" type="email"/>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="register-password">Senha</label>
+                                <input class="form-control" id="register-password" required="" type="password"/>
+                            </div>
+                            <button class="btn btn-orange w-100 mt-3" type="submit">Cadastrar</button>
+                        </form>
+                        <hr class="my-4"/>
+                        <p class="text-center">Já tem conta? <a href="#" id="show-login">Fazer login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page container py-5" id="carrinho">
+        <h2 class="section-title">Meu Carrinho</h2>
+        <div class="mb-4" id="cart-items"></div>
+        <div class="text-end mb-4">
+            <h3>Total: R$ <span id="total">0,00</span></h3>
+        </div>
+        <div class="d-flex gap-3 flex-wrap justify-content-end">
+            <button class="btn btn-outline-danger" onclick="clearCart()">Limpar Carrinho</button>
+            <a class="btn btn-success btn-lg" href="#" id="whatsapp-checkout">
+                <i class="bi bi-whatsapp"></i> Finalizar no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center text-white py-4">
+            <p class="mb-0">© 2025 3TECHINFO. Todos os direitos reservados. | Soluções completas em TI</p>
+        </div>
+    </footer>
+
+    <a aria-label="Fale conosco no WhatsApp" class="whatsapp-float" href="https://wa.me/22992221573" id="whatsapp-btn" target="_blank">
+        <svg fill="white" height="38" viewBox="0 0 24 24" width="38" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <path d="M20.52 3.48A11.76 11.76 0 0 0 12 0C5.41 0 0 5.41 0 12a11.94 11.94 0 0 0 1.57 5.97L0 24l6.23-1.55A11.92 11.92 0 0 0 12 24c6.59 0 12-5.41 12-12 0-3.21-1.27-6.15-3.48-8.39zM12 21.82a9.8 9.8 0 0 1-5.18-1.42l-.37-.22-3.83.95.97-3.74-.24-.38a9.8 9.8 0 0 1-1.55-5.06C2.8 6.55 6.94 2.8 12 2.8c2.61 0 5.08 1.01 6.93 2.86S21.2 9.39 21.2 12c0 5.06-4.14 9.2-9.2 9.2zm4.33-6.68c-.24-.12-.49-.23-.74-.35-.24-.12-1.42-.7-1.64-.78-.23-.08-.4-.12-.57.12-.17.23-.65.77-.79.93-.14.16-.29.18-.54.06-.25-.11-1.05-.39-1.99-1.23-.74-.66-1.24-1.47-1.56-2.02-.31-.55-.03-.84.22-1.09.2-.2.38-.38.57-.62.19-.23.25-.4.37-.62.11-.23.06-.43-.02-.62-.08-.19-.57-1.35-.78-1.85-.2-.49-.4-.43-.57-.43-.16 0-.35-.01-.54-.01-.2-.01-.52.06-.8.32-.28.25-1.07 1.05-1.07 2.56 0 1.51 1.1 2.97 1.25 3.17.14.2 2.14 3.27 5.17 4.58 3.03 1.3 3.03.88 3.58.82.55-.07 1.77-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.08-.13-.24-.22-.5-.35z"/>
+        </svg>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+    // ======= Google Identity (client-side) =======
+    function handleCredentialResponse(response) {
+        try {
+            const idToken = response.credential;
+            const payload = JSON.parse(atob(idToken.split('.')[1]));
+            const user = { name: payload.name, email: payload.email, sub: payload.sub };
+            localStorage.setItem('token', idToken);
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
+            loggedInUser = user;
+            if (typeof updateAuthUI === 'function') updateAuthUI();
+            openPage('painel');
+        } catch (e) {
+            console.error('Erro ao processar ID token Google', e);
+        }
+    }
+
+    // Inicializa o botão GSI — substituído pelo seu Client ID
+    (function initGoogleSignIn(){
+        if (!window.google || !document.getElementById('googleSignInBtn')) return;
+        google.accounts.id.initialize({
+            client_id: '63771822904-m69suv3cf72b3r1hv0eg5lpqpsvpadur.apps.googleusercontent.com',
+            callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+            document.getElementById('googleSignInBtn'),
+            { theme: 'outline', size: 'large', width: '100%' }
+        );
+        google.accounts.id.prompt();
+    })();
+    // ======= fim Google Identity =======
+
+        // ==================== NAVEGAÇÃO ====================
+        const pages = document.querySelectorAll('.page');
+        function openPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                updateWhatsAppLink(pageId);
+                // window.location.hash = pageId; // Remova ou comente esta linha!
+            }
+            if (pageId === 'produtos') {
+                filterProducts('todos');
+            }
+        }
+
+        // ==================== LINKS DO WHATSAPP ====================
+        const messages = {
+            home: "Olá! Gostaria de um orçamento de serviços de TI.",
+            servicos: "Olá! Gostaria de um orçamento de serviços de TI.",
+            aluguel: "Olá! Quero alugar equipamentos de TI.",
+            produtos: "Olá! Estou interessado(a) em um produto do catálogo.",
+            quemsomos: "Olá! Vim pela página Quem Somos e gostaria de conhecer os serviços.",
+            contato: "Olá! Gostaria de falar com a 3TECHINFO.",
+            blog: "Olá! Gostaria de saber mais sobre a consultoria de TI que vocês oferecem.",
+            'blog-post-ssd': "Olá! Gostaria de um orçamento para upgrade de SSD.",
+            carrinho: "Olá! Segue meu pedido do carrinho." // Esta mensagem é apenas um fallback
+        };
+
+        function updateWhatsAppLink(page) {
+            const msg = messages[page] || messages.home;
+            document.getElementById('whatsapp-btn').href = `https://wa.me/22992221573?text=${encodeURIComponent(msg)}`;
+        }
+
+        // ==================== CARRINHO ====================
+        let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        function updateCart() {
+            const items = document.getElementById('cart-items');
+            const totalEl = document.getElementById('total');
+            const checkoutBtn = document.getElementById('whatsapp-checkout');
+            items.innerHTML = '';
+            let total = 0;
+            let message = "Olá! Meu pedido do site:%0A%0A";
+ 
+            if (cart.length === 0) {
+                items.innerHTML = '<p class="text-center text-muted py-5 fs-4">Seu carrinho está vazio</p>';
+                checkoutBtn.href = "https://wa.me/22992221573";
+                totalEl.textContent = '0,00';
+                document.getElementById('cart-count').textContent = '0';
+                return;
+            }
+ 
+            cart.forEach((item, i) => {
+                const itemTotal = item.price * (item.qty || 1);
+                total += itemTotal;
+                message += `${item.qty || 1}x ${item.name} (R$ ${item.price.toFixed(2).replace('.', ',')})%0A`;
+ 
+                const itemHtml = `
+                    <div class="d-flex align-items-center justify-content-between p-3 mb-2 bg-white rounded shadow-sm">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0 me-3">${item.name}</h5>
+                            <span class="text-muted small">R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="input-group" style="width: 130px;">
+                                <button class="btn btn-outline-secondary quantity-btn" type="button" onclick="changeQty(${i}, -1)">-</button>
+                                <input type="text" class="form-control text-center p-0" value="${item.qty || 1}" readonly>
+                                <button class="btn btn-outline-secondary quantity-btn" type="button" onclick="changeQty(${i}, 1)">+</button>
+                            </div>
+                            <h5 class="ms-3 mb-0" style="width: 80px; text-align: right;">R$ ${(itemTotal).toFixed(2).replace('.', ',')}</h5>
+                            <button class="btn btn-outline-danger ms-3" onclick="removeItem(${i})">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                items.innerHTML += itemHtml;
+            });
+ 
+            message += `%0A*Total: R$ ${total.toFixed(2).replace('.', ',')}*`;
+            checkoutBtn.href = `https://wa.me/22992221573?text=${message}`;
+            totalEl.textContent = total.toFixed(2).replace('.', ',');
+            // Mostrar quantidade total de itens (soma das qtys)
+            const totalQty = cart.reduce((s, it) => s + (it.qty || 1), 0);
+            document.getElementById('cart-count').textContent = totalQty;
+        }
+
+        function addToCart(name, price) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) existing.qty = (existing.qty || 1) + 1;
+            else cart.push({name, price, qty: 1});
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+            alert(name + " adicionado ao carrinho!");
+        }
+
+        function changeQty(i, change) {
+            cart[i].qty = (cart[i].qty || 1) + change;
+            if (cart[i].qty <= 0) cart.splice(i, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        }
+
+        function removeItem(i) { cart.splice(i,1); localStorage.setItem('cart', JSON.stringify(cart)); updateCart(); }
+        function clearCart() { if(confirm("Limpar todo o carrinho?")) { cart=[]; localStorage.setItem('cart','[]'); updateCart(); } }
+
+        // ==================== FILTRO DE PRODUTOS ====================
+        function filterProducts(cat) {
+            // Seleciona qualquer item que contenha data-category dentro do container
+            document.querySelectorAll('#product-list [data-category]').forEach(el => {
+                el.style.display = (cat === 'todos' || el.dataset.category === cat) ? 'block' : 'none';
+            });
+        }
+
+        // ==================== SIMULAÇÃO DE AUTHENTICATION ====================
+        const authButtons = document.getElementById('auth-buttons');
+        const loginPage = document.getElementById('login');
+        const painelPage = document.getElementById('painel');
+        const userNameEl = document.getElementById('user-name');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const showRegisterBtn = document.getElementById('show-register');
+        const showLoginBtn = document.getElementById('show-login');
+        const registerCard = document.getElementById('register-card');
+        const loginCard = document.querySelector('#login .card:first-child');
+
+        let loggedInUser = null;
+
+        function updateAuthUI() {
+            authButtons.innerHTML = '';
+            if (loggedInUser) {
+                authButtons.innerHTML = `
+                    <a class="btn btn-outline-light" href="#painel" onclick="openPage('painel')">
+                        <i class="bi bi-person-circle"></i> ${loggedInUser.name || 'Cliente'}
+                    </a>
+                    <button class="btn btn-outline-danger ms-2" id="logoutBtnHeader">Sair</button>
+                `;
+                userNameEl.textContent = loggedInUser.name || 'Cliente';
+                // Adiciona evento ao botão de logout do header (vinculação imediata)
+                const logoutBtnHeader = document.getElementById('logoutBtnHeader');
+                if (logoutBtnHeader) {
+                    logoutBtnHeader.addEventListener('click', () => {
+                        loggedInUser = null;
+                        localStorage.removeItem('loggedInUser');
+                        localStorage.removeItem('token'); // Adicione esta linha se usar autenticação JWT
+                        updateAuthUI();
+                        openPage('home');
+                    });
+                }
+            } else {
+                authButtons.innerHTML = `
+                    <a class="btn btn-outline-light" href="#login" onclick="openPage('login')">
+                        <i class="bi bi-person-circle"></i> Login
+                    </a>
+                `;
+            }
+        }
+
+        // Login social removido (simulação). Integre OAuth no servidor / backend.
+
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // TODO: enviar credenciais para o backend (ex.: fetch('/api/login', ...))
+                alert("Login não implementado no frontend. Integre com o backend para autenticação.");
+            });
+        }
+
+        if (registerForm) {
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // TODO: enviar dados de cadastro para o backend (ex.: fetch('/api/register', ...))
+                alert("Cadastro não implementado. Integre com o backend para criar usuários.");
+            });
+        }
+
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                loggedInUser = null;
+                localStorage.removeItem('loggedInUser');
+                localStorage.removeItem('token'); // Adicione esta linha se usar autenticação JWT
+                updateAuthUI();
+                openPage('home');
+            });
+        }
+
+        if (showRegisterBtn) {
+            showRegisterBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginCard.style.display = 'none';
+                registerCard.style.display = 'block';
+            });
+        }
+
+        if (showLoginBtn) {
+            showLoginBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginCard.style.display = 'block';
+                registerCard.style.display = 'none';
+            });
+        }
+
+        const storedUser = localStorage.getItem('loggedInUser');
+        if (storedUser) {
+            loggedInUser = JSON.parse(storedUser);
+        }
+
+        // ==================== INICIALIZAÇÃO ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCart();
+            updateAuthUI();
+
+            const currentHash = window.location.hash.substring(1) || 'home';
+            if (document.getElementById(currentHash) && currentHash !== 'login' && currentHash !== 'register-card') {
+                 openPage(currentHash);
+            } else if (loggedInUser) {
+                 openPage('painel');
+            } else {
+                openPage('home');
+            }
+        });
+
+        // ==================== ESCOPO DO CABEÇALHO ====================
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        let headerHidden = false;
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 80) {
+                // Rolando para baixo
+                if (!headerHidden) {
+                    header.classList.add('hide-on-scroll');
+                    headerHidden = true;
+                }
+            } else if (scrollTop < lastScrollTop) {
+                // Rolando para cima
+                if (headerHidden) {
+                    header.classList.remove('hide-on-scroll');
+                    headerHidden = false;
+                }
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+
+        // pegar token da URL (após login social) e salvar
+  (function handleTokenFromQuery(){
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get('token');
+    if(token) {
+      localStorage.setItem('token', token);
+      // remove token da URL
+      params.delete('token');
+      const newUrl = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+      window.history.replaceState({}, document.title, newUrl);
+      // opcional: buscar /api/me para nome e atualizar UI
+      fetch((location.origin.includes('localhost') ? 'http://localhost:3000' : '') + '/api/me', {
+        headers: { Authorization: 'Bearer ' + token }
+      }).then(r=>r.json()).then(data=>{
+        if(data.name) {
+          localStorage.setItem('loggedInUser', JSON.stringify({ name: data.name, email: data.email }));
+          // chamar função existente para atualizar UI
+          if(typeof updateAuthUI === 'function') updateAuthUI();
+          openPage('painel');
+        }
+      }).catch(()=>{});
+    }
+  })();
+    </script>
+    <script>
+    (function ensureMapEmbed(){
+        const iframe = document.getElementById('map-iframe');
+        const container = document.getElementById('map-container');
+        if (!iframe || !container) return;
+        // thumbnail público (usado como fallback) — abre Street View exato em nova aba
+        const streetUrl = "https://www.google.com/maps/place/22%C2%B022'10.6%22S+41%C2%B046'54.3%22W/@-22.3696218,-41.7817039,3a,75y,279.6h,82.18t/data=!3m7!1e1!3m5!1s7OkyWd0oBq1BFgqLWXGLuw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.822723481085433%26panoid%3D7OkyWd0oBq1BFgqLWXGLuw%26yaw%3D279.60221419747523!7i16384!8i8192!4m4!3m3!8m2!3d-22.3696111!4d-41.78175?hl=pt-BR&entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D";
+        const thumbUrl = "https://streetviewpixels-pa.googleapis.com/v1/thumbnail?cb_client=maps_sv.tactile&w=900&h=600&pitch=7.822723481085433&panoid=7OkyWd0oBq1BFgqLWXGLuw&yaw=279.60221419747523";
+
+        // Se iframe carregar mas for bloqueado por X-Frame-Options o acesso ao conteúdo lança exceção
+        iframe.addEventListener('load', () => {
+            let blocked = false;
+            try {
+                // tentar acessar documento do iframe (disparará se bloqueado)
+                const doc = iframe.contentDocument || iframe.contentWindow.document;
+                // algumas vezes o browser mostra mensagem integrada mas permite acesso -> checar título vazio
+                if (!doc || !doc.body || doc.body.innerHTML.trim().length === 0) blocked = true;
+            } catch (e) {
+                blocked = true;
+            }
+            if (blocked) {
+                // substituir pelo fallback (imagem clicável)
+                container.innerHTML = `
+                    <a href="${streetUrl}" target="_blank" rel="noopener noreferrer" class="d-block h-100">
+                        <img src="${thumbUrl}" alt="Mapa - Street View" style="width:100%;height:100%;object-fit:cover;border-radius:.25rem;">
+                    </a>
+                `;
+                // garantir botão também abre a mesma URL
+                const openBtn = document.getElementById('open-streetview');
+                if (openBtn) openBtn.href = streetUrl;
+            }
+        });
+
+        // segurança: se o iframe nunca disparar load (rede lenta), mostrar fallback após 2.5s
+        setTimeout(() => {
+            if (!iframe.complete && container.contains(iframe)) {
+                // substituir por fallback
+                container.innerHTML = `
+                    <a href="${streetUrl}" target="_blank" rel="noopener noreferrer" class="d-block h-100">
+                        <img src="${thumbUrl}" alt="Mapa - Street View" style="width:100%;height:100%;object-fit:cover;border-radius:.25rem;">
+                    </a>
+                `;
+            }
+        }, 2500);
+    })();
+    </script>
+</body>
+</html>
